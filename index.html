@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>全网VIP视频解析-岩兔站</title>
+	<title>全网VIP视频解析</title>
 
 	<!-- Bootstrap -->
 	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +40,7 @@
 		<div class="header h3 text-center">
 			<h3>VIP视频解析</h3>
 		</div>
-		<div class="main">
+		<!-- <div class="main">
 			<form class="form-horizontal" method="post">
 				<div class="form-group">
 					<label for="api" class="col-sm-2 control-label">API地址</label>
@@ -56,12 +56,47 @@
 					<div class="col-sm-2">
 						<button type="button" id="play" class="btn btn-primary">解 析</button>
 					</div>
-				</div>
+				</div> -->
 				<!-- <div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="button" id="play" class="btn btn-primary">解 析</button>
 					</div>
 				</div> -->
+			<!-- </form>
+		</div> -->
+
+		<div class="input-group">
+			<span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+			<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+		  </div>
+
+		<div class="main">
+			<form class="form-horizontal" method="post">
+				<!-- <div class="form-group">
+					<div class="col-sm-4">
+						<select id="api" name="api" class="form-control"></select>
+					</div>
+					<div class="col-sm-6">
+						<input type="url" class="form-control" id="url" name="url" placeholder="视频地址">
+					</div>
+					<div class="col-sm-2">
+						<button type="button" id="play" class="btn btn-primary">解 析</button>
+					</div>
+				</div> -->
+
+				<div class="input-group">
+					<div class="input-group-btn">
+						<select id="api" name="api" class="form-control input-group-addon"><span> 切换接口 </span></select>
+						<!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button> -->
+					</div>
+					
+					<input type="url" class="form-control" id="url" name="url" placeholder="视频地址">
+
+					<span class="input-group-btn">
+						<button type="button" id="play" class="btn btn-primary">解 析</button>
+					  </span>
+					
+				  </div>
 			</form>
 		</div>
 		<!-- <hr /> -->
@@ -71,7 +106,7 @@
 		</div>
 
 
-		<div class="main" style="display:none">
+		<!-- <div class="main" style="display:none">
 			<h4>如播放地址失效，可重新设置API列表。</h4>
 			<div class="form-horizontal">
 				<div class="form-group">
@@ -86,7 +121,7 @@ https://v.7cyd.com/vip/?url=
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 	</div>
 
@@ -96,17 +131,25 @@ https://v.7cyd.com/vip/?url=
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script>
+		let url_ls = [
+			'http://jx.mw0.cc/?url=',
+			'https://jx.iztyy.com/svip/?url=',
+			'https://jsap.attakids.com/?url=',
+			'https://v.7cyd.com/vip/?url=',
+			'失效请联系管理员'
+		]
 		function setApi() {
 			$("#api").children().remove();
-			var apilist = $("#apiList").val().split(/\r?\n/);
+			// var apilist = $("#apiList").val().split(/\r?\n/);
+			let apilist = url_ls
 			for (var i = 0; i < apilist.length; i++) {
 				$("#api").append("<option>" + apilist[i] + "</option>");
 			}
 		}
-		$("#apiList").blur(function () {
-			setApi();
-			$.cookie("apiList", $("#apiList").val());
-		});
+		// $("#apiList").blur(function () {
+		// 	setApi();
+		// 	$.cookie("apiList", $("#apiList").val());
+		// });
 		$("#play").click(function () {
 			$api = $("#api").val();
 			$url = $("#url").val();
@@ -125,10 +168,10 @@ https://v.7cyd.com/vip/?url=
 			oWin.src = $api + $url
 		});
 		function init() {
-			var ckapi = $.cookie("apiList");
-			if (ckapi && ckapi != "") {
-				$("#apiList").val(ckapi);
-			}
+			// var ckapi = $.cookie("apiList");
+			// if (ckapi && ckapi != "") {
+			// 	$("#apiList").val(ckapi);
+			// }
 			setApi();
 		}
 		init();
