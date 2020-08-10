@@ -79,7 +79,7 @@
 			// var apilist = $("#apiList").val().split(/\r?\n/);
 			let apilist = url_ls
 			for (var i = 0; i < apilist.length; i++) {
-				$("#api").append("<option value='"+apilist[i]+"'>" + apilist[i] + "</option>");
+				$("#api").append("<option value='" + apilist[i] + "'>" + apilist[i] + "</option>");
 			}
 		}
 		// $("#apiList").blur(function () {
@@ -122,14 +122,17 @@
 		})();
 	</script>
 
-		<script>
-		var _hmt = _hmt || [];
-		(function () {
-			var hm = document.createElement("script");
-			hm.src = "https://hm.baidu.com/hm.js?65e1c6689693082cffb3b7e1f2d8027f";
-			var s = document.getElementsByTagName("script")[0];
-			s.parentNode.insertBefore(hm, s);
-		})();
+	<script>
+		function get_api() {
+			axios.get('https://api.apiopen.top/todayVideo')
+				.then(function (response) {
+					console.log(response);
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+		}
+		get_api()
 	</script>
 </body>
 
