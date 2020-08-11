@@ -43,7 +43,7 @@
 				<select id="api" name="api" class="input-group select-control text-control">
 				</select>
 			</div>
-			<input type="text" class="form-control" aria-label="..." placeholder="☆ 请输入爱奇艺、腾讯视频、优酷等视频播放链接">
+			<input id='url' type="text" class="form-control" aria-label="..." placeholder="☆ 请输入爱奇艺、腾讯视频、优酷等视频播放链接">
 			<span class="input-group-btn">
 				<button type="button" id="play" class="btn btn-default btn-play">解 析</button>
 			</span>
@@ -89,6 +89,8 @@
 		$("#play").click(function () {
 			$api = $("#api").val();
 			$url = $("#url").val();
+			console.log('api',$api);
+			console.log('url',$url);
 			if ($url == "" || $url == null || !/^http.*$/.test($url)) {
 				alert('视频地址不正确！');
 				return;
@@ -113,29 +115,28 @@
 		init();
 	</script>
 	<script>
-		var _hmt = _hmt || [];
-		(function () {
-			var hm = document.createElement("script");
-			hm.src = "https://hm.baidu.com/hm.js?65e1c6689693082cffb3b7e1f2d8027f";
-			var s = document.getElementsByTagName("script")[0];
-			s.parentNode.insertBefore(hm, s);
-		})();
+		// var _hmt = _hmt || [];
+		// (function () {
+		// 	var hm = document.createElement("script");
+		// 	hm.src = "https://hm.baidu.com/hm.js?65e1c6689693082cffb3b7e1f2d8027f";
+		// 	var s = document.getElementsByTagName("script")[0];
+		// 	s.parentNode.insertBefore(hm, s);
+		// })();
 	</script>
 
 	<script>
-		function get_api() {
-			axios.get('https://api.apiopen.top/todayVideo')
-				.then(function (response) {
-					console.log(response);
-				})
-				.catch(function (error) {
-					console.log(error);
-				});
-		}
-		get_api()
-		var test = window.location.href;
-		alert(test);
-
+		// function get_api() {
+		// 	axios.get('https://api.apiopen.top/todayVideo')
+		// 		.then(function (response) {
+		// 			console.log(response);
+		// 		})
+		// 		.catch(function (error) {
+		// 			console.log(error);
+		// 		});
+		// }
+		// get_api()
+		// var test = window.location.href;
+		// alert(test);
 	</script>
 </body>
 
